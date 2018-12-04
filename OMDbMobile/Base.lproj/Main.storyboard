@@ -21,16 +21,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="tlC-oG-4cf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
+                            <searchBar contentMode="redraw" placeholder="Find your favourite movie" translatesAutoresizingMaskIntoConstraints="NO" id="TPT-CJ-7iz">
+                                <rect key="frame" x="20" y="64" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="vGq-Ub-6t8"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tlC-oG-4cf" firstAttribute="top" secondItem="zbZ-wW-nM9" secondAttribute="top" id="Lp3-Qu-WJr"/>
                             <constraint firstItem="fGH-Sw-EEf" firstAttribute="trailing" secondItem="tlC-oG-4cf" secondAttribute="trailing" id="XKf-mx-ZXW"/>
                             <constraint firstItem="tlC-oG-4cf" firstAttribute="leading" secondItem="fGH-Sw-EEf" secondAttribute="leading" id="gHf-mC-EZc"/>
+                            <constraint firstItem="fGH-Sw-EEf" firstAttribute="trailing" secondItem="TPT-CJ-7iz" secondAttribute="trailing" constant="20" id="lTE-ZH-vTH"/>
+                            <constraint firstItem="TPT-CJ-7iz" firstAttribute="leading" secondItem="fGH-Sw-EEf" secondAttribute="leading" constant="20" id="mjc-Cw-XCW"/>
                             <constraint firstAttribute="bottom" secondItem="tlC-oG-4cf" secondAttribute="bottom" id="qIH-iS-6st"/>
+                            <constraint firstItem="TPT-CJ-7iz" firstAttribute="top" secondItem="fGH-Sw-EEf" secondAttribute="top" constant="20" id="rqg-dR-GpG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fGH-Sw-EEf"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="TPT-CJ-7iz" id="RS3-1j-BjB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5G2-7b-7gc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,12 +77,29 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqN-Ew-fYK">
+                                        <rect key="frame" x="12" y="2" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="EnQ-rU-iBL"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="TwA-64-g4G"/>
+                                            <constraint firstAttribute="width" constant="40" id="fgY-ay-F5V"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="iSM-Wf-w1d"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="9" minY="12" maxX="9" maxY="12"/>
+                                        <state key="normal" image="ic_back"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="NNo-tf-eFU" eventType="touchUpInside" id="TuP-OC-lgf"/>
+                                            <action selector="backButtonClicked:" destination="Uh1-pD-OrO" eventType="touchUpInside" id="v6v-VG-tro"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.29411764709999999" green="0.31372549020000001" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="U6d-9h-gFz" firstAttribute="centerX" secondItem="Gyg-Yk-nMG" secondAttribute="centerX" id="7Tm-9y-uIE"/>
                                     <constraint firstAttribute="height" constant="44" id="AlU-wt-XBT"/>
                                     <constraint firstItem="U6d-9h-gFz" firstAttribute="centerY" secondItem="Gyg-Yk-nMG" secondAttribute="centerY" id="BQc-6R-Th6"/>
+                                    <constraint firstItem="qqN-Ew-fYK" firstAttribute="centerY" secondItem="U6d-9h-gFz" secondAttribute="centerY" id="IMq-Sg-nC4"/>
+                                    <constraint firstItem="qqN-Ew-fYK" firstAttribute="leading" secondItem="Gyg-Yk-nMG" secondAttribute="leading" constant="12" id="ngh-US-3ze"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5la-CR-vGc">
@@ -183,15 +217,39 @@
                                     <constraint firstAttribute="height" constant="44" id="yEh-CB-mzi"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP9-cf-Zky">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry!! No Movie Found With Searched Text." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0R-xY-oq6">
+                                        <rect key="frame" x="20" y="347" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Ebm-bB-jzX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-MediumItalic" family="Helvetica Neue" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="a0R-xY-oq6" firstAttribute="centerY" secondItem="DP9-cf-Zky" secondAttribute="centerY" id="5su-xl-Zpv"/>
+                                    <constraint firstItem="a0R-xY-oq6" firstAttribute="centerX" secondItem="DP9-cf-Zky" secondAttribute="centerX" id="C3m-CZ-dqp"/>
+                                    <constraint firstItem="a0R-xY-oq6" firstAttribute="leading" secondItem="DP9-cf-Zky" secondAttribute="leading" constant="20" id="qES-v7-zJq"/>
+                                    <constraint firstAttribute="trailing" secondItem="a0R-xY-oq6" secondAttribute="trailing" constant="20" id="xeu-MX-Yje"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Gyg-Yk-nMG" secondAttribute="trailing" id="3jz-38-ch6"/>
                             <constraint firstAttribute="bottom" secondItem="PqR-iH-6Pf" secondAttribute="bottom" id="4CG-FV-GXM"/>
+                            <constraint firstAttribute="bottom" secondItem="DP9-cf-Zky" secondAttribute="bottom" id="4sj-5y-yFy"/>
+                            <constraint firstItem="DP9-cf-Zky" firstAttribute="top" secondItem="tww-ui-mgq" secondAttribute="bottom" id="5n3-FU-VAZ"/>
                             <constraint firstItem="5la-CR-vGc" firstAttribute="top" secondItem="tww-ui-mgq" secondAttribute="bottom" id="7kL-Gu-b03"/>
                             <constraint firstItem="tww-ui-mgq" firstAttribute="trailing" secondItem="QWn-T2-j3R" secondAttribute="trailing" id="9aM-Rb-vmN"/>
                             <constraint firstItem="PqR-iH-6Pf" firstAttribute="leading" secondItem="QWn-T2-j3R" secondAttribute="leading" id="CY6-tb-8CF"/>
                             <constraint firstItem="QWn-T2-j3R" firstAttribute="bottom" secondItem="5la-CR-vGc" secondAttribute="bottom" id="D42-sl-wVX"/>
+                            <constraint firstItem="DP9-cf-Zky" firstAttribute="leading" secondItem="QWn-T2-j3R" secondAttribute="leading" id="EvS-Wx-nQc"/>
                             <constraint firstItem="tww-ui-mgq" firstAttribute="bottom" secondItem="Gyg-Yk-nMG" secondAttribute="bottom" id="N4T-nV-sJd"/>
                             <constraint firstItem="Gyg-Yk-nMG" firstAttribute="leading" secondItem="z1W-gi-iHc" secondAttribute="leading" id="U4R-oW-N8G"/>
                             <constraint firstItem="5la-CR-vGc" firstAttribute="leading" secondItem="QWn-T2-j3R" secondAttribute="leading" id="Vik-8f-D8C"/>
@@ -200,6 +258,7 @@
                             <constraint firstItem="tww-ui-mgq" firstAttribute="leading" secondItem="QWn-T2-j3R" secondAttribute="leading" id="YRC-Nf-nY2"/>
                             <constraint firstItem="PqR-iH-6Pf" firstAttribute="trailing" secondItem="QWn-T2-j3R" secondAttribute="trailing" id="Yew-nl-2H6"/>
                             <constraint firstItem="tww-ui-mgq" firstAttribute="top" secondItem="z1W-gi-iHc" secondAttribute="top" id="fty-dR-Bsu"/>
+                            <constraint firstItem="DP9-cf-Zky" firstAttribute="trailing" secondItem="QWn-T2-j3R" secondAttribute="trailing" id="taI-Rl-Yrs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QWn-T2-j3R"/>
                     </view>
@@ -209,6 +268,8 @@
                         <outlet property="collectionView" destination="5la-CR-vGc" id="Han-Wg-HCa"/>
                         <outlet property="footerActivityIndicator" destination="nSA-A6-JMh" id="Vdt-ic-BUv"/>
                         <outlet property="footerView" destination="PqR-iH-6Pf" id="Jgn-mB-h2r"/>
+                        <outlet property="noMovieView" destination="DP9-cf-Zky" id="4bS-Gj-Ms5"/>
+                        <outlet property="screenTitleLabel" destination="U6d-9h-gFz" id="r4A-Oe-Npd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="emu-p5-qFW" userLabel="First Responder" sceneMemberID="firstResponder"/>

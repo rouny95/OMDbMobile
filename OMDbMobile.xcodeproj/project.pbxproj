@@ -20,6 +20,7 @@
 		87D61FD921B650BE00D612C1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D61FD821B650BE00D612C1 /* SplashViewController.swift */; };
 		87D61FDB21B6828700D612C1 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D61FDA21B6828700D612C1 /* Util.swift */; };
 		87D61FE521B6973E00D612C1 /* OMDbMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D61FE421B6973E00D612C1 /* OMDbMobileTests.swift */; };
+		87D997FF21B6D55B0041BC83 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D997FE21B6D55B0041BC83 /* DeviceUtil.swift */; };
 		87DEE9B821B595CC000206D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DEE9B721B595CC000206D4 /* AppDelegate.swift */; };
 		87DEE9BD21B595CC000206D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DEE9BB21B595CC000206D4 /* Main.storyboard */; };
 		87DEE9BF21B595CD000206D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87DEE9BE21B595CD000206D4 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		87D61FE221B6973E00D612C1 /* OMDbMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMDbMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D61FE421B6973E00D612C1 /* OMDbMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMDbMobileTests.swift; sourceTree = "<group>"; };
 		87D61FE621B6973E00D612C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87D997FE21B6D55B0041BC83 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		87DEE9B421B595CC000206D4 /* OMDbMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OMDbMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DEE9B721B595CC000206D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87DEE9BC21B595CC000206D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				87D61FBE21B59D1900D612C1 /* Constants.swift */,
 				87D61FC621B5ADF300D612C1 /* DataParser.swift */,
 				87D61FDA21B6828700D612C1 /* Util.swift */,
+				87D997FE21B6D55B0041BC83 /* DeviceUtil.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				87D61FD021B5D36300D612C1 /* MovieDetailsTableViewCell.swift in Sources */,
 				87DEE9B821B595CC000206D4 /* AppDelegate.swift in Sources */,
 				87D61FC721B5ADF300D612C1 /* DataParser.swift in Sources */,
+				87D997FF21B6D55B0041BC83 /* DeviceUtil.swift in Sources */,
 				87D61FCE21B5CCAA00D612C1 /* BaseViewController.swift in Sources */,
 				87D61FDB21B6828700D612C1 /* Util.swift in Sources */,
 				87D61FBF21B59D1900D612C1 /* Constants.swift in Sources */,
@@ -419,6 +423,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8675MSVEV4;
 				INFOPLIST_FILE = OMDbMobileTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -438,6 +443,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8675MSVEV4;
 				INFOPLIST_FILE = OMDbMobileTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -574,6 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OMDbMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,6 +599,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = OMDbMobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -30,7 +30,7 @@ struct Movie {
         if let _ = dictionary.object(forKey: "Title") {
             self.title = dictionary["Title"] as! String
         } else {
-            self.title = "Batman Coming Soon"
+            self.title = "Coming Soon..."
         }
         if let _ = dictionary.object(forKey: "Year")  {
             var year = dictionary.object(forKey: "Year") as! String

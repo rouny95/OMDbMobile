@@ -13,27 +13,31 @@ class MovieListViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var footerActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var screenTitleLabel: UILabel!
+    @IBOutlet weak var noMovieView: UIView!
     
     var movieList = [Movie]()
     var currentPageIndex: Int = 1
     var isLoadingMore: Bool = false
     var shouldLoadMore: Bool = false
+    var searchedMovieName: String = ""
     
     //MARK: - LifeCycle Methods
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.screenTitleLabel.text = self.searchedMovieName.uppercased()
+        self.noMovieView.isHidden = true
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.getMovieList()
+        self.getMovieList(isFromViewDidLoad: true)
     }
     
     override func didReceiveMemoryWarning() {
     }
 
     //MARK: - Utility Methods
-    
     
     /// Reloads the collectionview after the api call
     func updateUI() {
@@ -71,27 +75,36 @@ class MovieListViewController: BaseViewController {
         self.isLoadingMore = false
     }
     
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: - APIManager Methods
     
     /** Call APIManager Fnction to get the list of orders **/
-    func getMovieList() {
+    func getMovieList(isFromViewDidLoad: Bool = false) {
         if self.currentPageIndex > 0 {
             if self.currentPageIndex == 1 {
                 super.startAnimating()
             } else {
                 self.isLoadingMore = true
             }
-            ApiManager.sharedInstance.getMovieList(currentPageIndex, movieName: MovieNameConstants.BATMAN,  completion: {(response) -> Void in
+            ApiManager.sharedInstance.getMovieList(currentPageIndex, movieName: searchedMovieName,  completion: {(response) -> Void in
                 
                 let responseMessage = DataParser.sharedInstance.returnParsedResponseMessage((response as? NSDictionary)!)
                 
                 if responseMessage.lowercased() == ResponseMessageConstants.FALSE {
                     
+                    super.stopAnimating()
                     self.shouldLoadMore = false
                     self.currentPageIndex = 0
                     self.footerView.isHidden = true
                     self.footerActivityIndicator.stopAnimating()
                     self.isLoadingMore = false
+                    
+                    if isFromViewDidLoad {
+                        self.noMovieView.isHidden = false
+                    }
                     
                 } else if responseMessage.lowercased() == ResponseMessageConstants.TRUE {
                     
