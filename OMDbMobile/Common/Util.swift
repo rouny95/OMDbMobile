@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 class Util: NSObject {
      class var sharedInstance : Util {

@@ -11,8 +11,9 @@ import Nuke
 
 class MovieDetailsViewController: UIViewController {
 
-    @IBOutlet weak var screenTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewLeadingConstraint: NSLayoutConstraint!
     
     var movieObject = Movie()
     
@@ -21,6 +22,7 @@ class MovieDetailsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.setTableViewConstraints()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -30,8 +32,32 @@ class MovieDetailsViewController: UIViewController {
         
     }
     
+    //MARK: - Utility Methods
+    
+    func setTableViewConstraints() {
+        if  UIDevice.current.orientation == .portrait {
+            self.tableViewLeadingConstraint.constant = 0
+            self.tableViewTrailingConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        } else if UIDevice.current.orientation == .landscapeLeft ||  UIDevice.current.orientation == .landscapeRight {
+            if DeviceType.IS_IPHONE_5_OR_LESS  {
+                self.tableViewLeadingConstraint.constant = 60
+                self.tableViewTrailingConstraint.constant = 60
+            } else {
+                self.tableViewLeadingConstraint.constant = 110
+                self.tableViewTrailingConstraint.constant = 110
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     //MARK: - Screen Orientation Methods
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+       
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.setTableViewConstraints()
         self.tableView.reloadData()
     }
     
@@ -54,7 +80,7 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let requiredHeight =  UIScreen.main.bounds.width
-        return requiredHeight + 180
+        return requiredHeight + 210
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
